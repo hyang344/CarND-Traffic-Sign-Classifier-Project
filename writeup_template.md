@@ -106,16 +106,15 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+I tried LeNet because it's the one we learned in class and we actually implemented in the lab.
 * What were some problems with the initial architecture?
+The accuracy is not good enough (89%).
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+I added a few dropout and pooling layers because I once read about Resnet and it inspires me that sometimes dropping data or picking the most significant data can increase accuracy and it helps the whole process run faster, so I implemented it. I also incremented the depth of the network and it kind of helped the whole accuracy.
 * Which parameters were tuned? How were they adjusted and why?
+The depth was increase because I believe it increments my accuracy.
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+For the convolution layer in the beginning, it helps getting rid of data that is at the sides and the corners, which are not important aspects for identifying signs(as the signs are in the middle). Dropouts & Pooling works because I believe similar to humans we only look at the most important characteristics and tend to not let details stop us from looking at the whole picture, which all in all helps identification.
 
 ###Test a Model on New Images
 
@@ -126,7 +125,11 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-The first image might be difficult to classify because ...
+The first and third image are relatively easy to classify.
+
+The second image might be difficult to classify because it is dark and the shape of the sign can be hard to identify.
+
+The forth and fifth image might be difficult to classify as they contain quite a few blurred details on the sign.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -134,14 +137,14 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| No passing for vehicles over 3.5 metric tons      		| No passing for vehicles over 3.5 metric tons   									| 
+| End of all speed and passing limits     			| End of all speed and passing limits 										|
+| Keep right					| Keep right											|
+| Slippery road      		| Slippery road					 				|
+| Road work			| Road work      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the validation set of 93.9%
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -151,14 +154,12 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.00         			| No passing for vehicles over 3.5 metric tons   									| 
+| 1.00     				| End of all speed and passing limits 										|
+| 1.00				| Keep right											|
+| 1.00      			| Slippery road					 				|
+| 1.00			    | Road work      							|
 
-
-For the second image ... 
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
